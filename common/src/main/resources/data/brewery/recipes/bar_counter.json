@@ -3,10 +3,13 @@
   "key": {
     "#": {
       "tag": "minecraft:planks"
+    },
+    "B": {
+      "tag": "minecraft:wooden_slabs"
     }
   },
   "pattern": [
-    "###",
+    "##B",
     "## ",
     "## "
   ],
