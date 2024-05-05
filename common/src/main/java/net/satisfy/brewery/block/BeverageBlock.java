@@ -3,6 +3,7 @@ package net.satisfy.brewery.block;
 import com.mojang.datafixers.util.Pair;
 import de.cristelknight.doapi.common.block.StorageBlock;
 import de.cristelknight.doapi.common.block.entity.StorageBlockEntity;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -29,7 +30,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.satisfy.brewery.item.DrinkBlockItem;
 import net.satisfy.brewery.registry.StorageTypeRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class BeverageBlock extends StorageBlock {
@@ -118,7 +118,7 @@ public class BeverageBlock extends StorageBlock {
 
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        return BreweryUtil.isSolid(levelReader, blockPos);
+        return GeneralUtil.isSolid(levelReader, blockPos);
     }
 
     @Override

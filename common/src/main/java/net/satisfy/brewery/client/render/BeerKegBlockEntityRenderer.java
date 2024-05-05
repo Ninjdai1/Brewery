@@ -2,7 +2,7 @@ package net.satisfy.brewery.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.satisfy.brewery.block.BeerKegFlowerPotBlock;
-import net.satisfy.brewery.entity.BeerKegFlowerPotBlockEntity;
+import net.satisfy.brewery.block.entity.BeerKegFlowerPotBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -10,7 +10,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 
-import static net.satisfy.brewery.util.BreweryClientUtil.renderBlock;
+import static de.cristelknight.doapi.client.ClientUtil.renderBlock;
+
 
 public class BeerKegBlockEntityRenderer implements BlockEntityRenderer<BeerKegFlowerPotBlockEntity> {
 

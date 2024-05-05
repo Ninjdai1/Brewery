@@ -2,7 +2,7 @@ package net.satisfy.brewery.util.rope;
 
 import dev.architectury.networking.NetworkManager;
 import net.satisfy.brewery.Brewery;
-import net.satisfy.brewery.block.crops.HopsCropHeadBlock;
+import net.satisfy.brewery.block.HopsCropHeadBlock;
 import net.satisfy.brewery.entity.rope.HangingRopeEntity;
 import net.satisfy.brewery.entity.rope.RopeCollisionEntity;
 import net.satisfy.brewery.entity.rope.RopeKnotEntity;

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.satisfy.brewery.Brewery;
 import net.satisfy.brewery.block.brewingstation.BrewKettleBlock;
 import net.satisfy.brewery.block.property.Liquid;
-import net.satisfy.brewery.entity.BrewstationBlockEntity;
+import net.satisfy.brewery.block.entity.BrewstationBlockEntity;
 import net.satisfy.brewery.registry.BlockStateRegistry;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,8 +1,7 @@
 package net.satisfy.brewery.block;
 
-import net.satisfy.brewery.block.property.LineConnectingType;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.satisfy.brewery.registry.BlockStateRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -35,11 +34,11 @@ import java.util.function.Supplier;
 public class BarCounterBlock extends Block {
 
     public static final DirectionProperty FACING;
-    public static final EnumProperty<LineConnectingType> TYPE;
+    public static final EnumProperty<GeneralUtil.LineConnectingType> TYPE;
 
     public BarCounterBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(((this.stateDefinition.any().setValue(FACING, Direction.NORTH)).setValue(TYPE, LineConnectingType.NONE)));
+        this.registerDefaultState(((this.stateDefinition.any().setValue(FACING, Direction.NORTH)).setValue(TYPE, GeneralUtil.LineConnectingType.NONE)));
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -51,12 +50,12 @@ public class BarCounterBlock extends Block {
 
     public static final Map<Direction, VoxelShape> SHAPE = Util.make(new HashMap<>(), map -> {
         for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-            map.put(direction, BreweryUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+            map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
         }
     });
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE.get(state.getValue(FACING));
     }
 
@@ -87,7 +86,7 @@ public class BarCounterBlock extends Block {
 
         Direction facing = state.getValue(FACING);
 
-        LineConnectingType type;
+        GeneralUtil.LineConnectingType type;
         switch (facing) {
             case EAST -> type = getType(state, world.getBlockState(pos.south()), world.getBlockState(pos.north()));
             case SOUTH -> type = getType(state, world.getBlockState(pos.west()), world.getBlockState(pos.east()));
@@ -100,18 +99,18 @@ public class BarCounterBlock extends Block {
         world.setBlock(pos, state, 3);
     }
 
-    public LineConnectingType getType(BlockState state, BlockState left, BlockState right) {
+    public GeneralUtil.LineConnectingType getType(BlockState state, BlockState left, BlockState right) {
         boolean shape_left_same = left.getBlock() == state.getBlock() && left.getValue(FACING) == state.getValue(FACING);
         boolean shape_right_same = right.getBlock() == state.getBlock() && right.getValue(FACING) == state.getValue(FACING);
 
         if (shape_left_same && shape_right_same) {
-            return LineConnectingType.MIDDLE;
+            return GeneralUtil.LineConnectingType.MIDDLE;
         } else if (shape_left_same) {
-            return LineConnectingType.LEFT;
+            return GeneralUtil.LineConnectingType.LEFT;
         } else if (shape_right_same) {
-            return LineConnectingType.RIGHT;
+            return GeneralUtil.LineConnectingType.RIGHT;
         }
-        return LineConnectingType.NONE;
+        return GeneralUtil.LineConnectingType.NONE;
     }
 
     @Override
@@ -132,7 +131,7 @@ public class BarCounterBlock extends Block {
 
     static {
         FACING = BlockStateProperties.HORIZONTAL_FACING;
-        TYPE = BlockStateRegistry.LINE_CONNECTING_TYPE;
+        TYPE = GeneralUtil.LINE_CONNECTING_TYPE;
     }
 
     @Override

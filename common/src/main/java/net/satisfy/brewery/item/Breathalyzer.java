@@ -1,5 +1,6 @@
 package net.satisfy.brewery.item;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
 import net.satisfy.brewery.effect.alcohol.AlcoholLevel;
 import net.satisfy.brewery.effect.alcohol.AlcoholPlayer;
 import net.minecraft.ChatFormatting;
@@ -16,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.satisfy.brewery.registry.SoundEventRegistry;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class Breathalyzer extends Item {
         itemStack.setTag(new CompoundTag());
         player.startUsingItem(interactionHand);
         player.awardStat(Stats.ITEM_USED.get(this));
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEventRegistry.BREATH.get(), SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), DoApiSoundEventRegistry.BREATH.get(), SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
         return InteractionResultHolder.consume(itemStack);
     }
 

@@ -2,18 +2,10 @@ package net.satisfy.brewery;
 
 import dev.architectury.event.events.common.InteractionEvent;
 import dev.architectury.event.events.common.PlayerEvent;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.level.entity.EntityAttributeRegistry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.satisfy.brewery.block.SiloBlock;
 import net.satisfy.brewery.block.brew_event.BrewEvents;
-import net.satisfy.brewery.entity.BeerElementalEntity;
 import net.satisfy.brewery.event.*;
 import net.satisfy.brewery.networking.BreweryNetworking;
 import net.satisfy.brewery.registry.*;
-import net.satisfy.brewery.util.BreweryIdentifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +23,6 @@ public class Brewery {
         CommonEvents.init();
         BreweryNetworking.registerC2SPackets();
         EntityRegistry.init();
-        SoundEventRegistry.init();
         RecipeTypeRegistry.init();
         registerEvents();
 

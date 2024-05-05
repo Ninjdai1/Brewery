@@ -1,5 +1,7 @@
-package net.satisfy.brewery.entity;
+package net.satisfy.brewery.block.entity;
 
+import de.cristelknight.doapi.common.util.GeneralUtil;
+import de.cristelknight.doapi.common.world.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -20,8 +22,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.satisfy.brewery.block.SiloBlock;
 import net.satisfy.brewery.registry.BlockEntityRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
-import net.satisfy.brewery.util.ImplementedInventory;
 import net.satisfy.brewery.util.silo.ConnectivityHandler;
 import net.satisfy.brewery.util.silo.IMultiBlockEntityContainer;
 import org.jetbrains.annotations.NotNull;
@@ -307,7 +307,7 @@ public class SiloBlockEntity extends BlockEntity implements IMultiBlockEntityCon
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
         if (this.controller != null)
-            BreweryUtil.putBlockPos(compoundTag, this.controller);
+            GeneralUtil.putBlockPos(compoundTag, this.controller);
         compoundTag.putBoolean("Update", this.updateConnectivity);
         compoundTag.putInt("Width", this.width);
         compoundTag.putInt("Height", this.height);
@@ -319,7 +319,7 @@ public class SiloBlockEntity extends BlockEntity implements IMultiBlockEntityCon
     @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
-        this.controller = BreweryUtil.readBlockPos(compoundTag);
+        this.controller = GeneralUtil.readBlockPos(compoundTag);
         this.updateConnectivity = !compoundTag.contains("Update") || compoundTag.getBoolean("Update");
         this.width = compoundTag.contains("Width") ? compoundTag.getInt("Width") : 1;
         this.height = compoundTag.contains("Height") ? compoundTag.getInt("Height") : 1;

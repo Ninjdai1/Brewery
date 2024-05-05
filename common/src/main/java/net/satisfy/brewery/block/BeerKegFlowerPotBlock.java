@@ -1,7 +1,7 @@
 package net.satisfy.brewery.block;
 
 import de.cristelknight.doapi.common.block.FacingBlock;
-import net.satisfy.brewery.entity.BeerKegFlowerPotBlockEntity;
+import net.satisfy.brewery.block.entity.BeerKegFlowerPotBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,7 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;

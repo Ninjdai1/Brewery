@@ -1,15 +1,14 @@
 package net.satisfy.brewery.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import de.cristelknight.doapi.client.ClientUtil;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.satisfy.brewery.block.brewingstation.BrewingstationBlock;
-import net.satisfy.brewery.entity.BrewstationBlockEntity;
-import net.satisfy.brewery.util.BreweryUtil;
+import net.satisfy.brewery.block.entity.BrewstationBlockEntity;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -68,7 +67,7 @@ public class BrewingstationRenderer implements BlockEntityRenderer<BrewstationBl
             matrixStack.pushPose();
             Vector3f offset = offsetRandomly(random, 1 / 16f);
             matrixStack.translate(offset.x, offset.y, offset.z);
-            BreweryUtil.renderItem(stack, matrixStack, bufferSource, entity);
+            ClientUtil.renderItem(stack, matrixStack, bufferSource, entity);
             matrixStack.popPose();
         }
     }

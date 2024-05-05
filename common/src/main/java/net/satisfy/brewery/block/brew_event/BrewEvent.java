@@ -1,6 +1,6 @@
 package net.satisfy.brewery.block.brew_event;
 
-import net.satisfy.brewery.entity.BrewstationBlockEntity;
+import net.satisfy.brewery.block.entity.BrewstationBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;

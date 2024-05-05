@@ -1,34 +1,18 @@
 {
   "variants": {
-    "facing=north,type=none": {
+    "facing=north,type=single": {
       "model": "brewery:block/sideboard"
     },
-    "facing=east,type=none": {
+    "facing=east,type=single": {
       "model": "brewery:block/sideboard",
       "y": 90
     },
-    "facing=south,type=none": {
+    "facing=south,type=single": {
       "model": "brewery:block/sideboard",
       "y": 180
     },
-    "facing=west,type=none": {
+    "facing=west,type=single": {
       "model": "brewery:block/sideboard",
-      "y": 270
-    },
-
-    "facing=north,type=middle": {
-      "model": "brewery:block/sideboard_connected_middle"
-    },
-    "facing=east,type=middle": {
-      "model": "brewery:block/sideboard_connected_middle",
-      "y": 90
-    },
-    "facing=south,type=middle": {
-      "model": "brewery:block/sideboard_connected_middle",
-      "y": 180
-    },
-    "facing=west,type=middle": {
-      "model": "brewery:block/sideboard_connected_middle",
       "y": 270
     },
 

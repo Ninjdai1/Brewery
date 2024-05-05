@@ -1,5 +1,7 @@
 package net.satisfy.brewery.block.brewingstation;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,8 +26,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.satisfy.brewery.block.property.BrewMaterial;
 import net.satisfy.brewery.registry.BlockStateRegistry;
-import net.satisfy.brewery.registry.SoundEventRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -123,7 +123,7 @@ public class BrewWhistleBlock extends BrewingstationBlock {
         }
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastSoundTime >= 3000) {
-            world.playLocalSound(x, y, z, SoundEventRegistry.BREWSTATION_WHISTLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+            world.playLocalSound(x, y, z, DoApiSoundEventRegistry.BREWSTATION_WHISTLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             lastSoundTime = currentTime;
         }
     }
@@ -152,12 +152,12 @@ public class BrewWhistleBlock extends BrewingstationBlock {
         };
         BOTTOM_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL) {
-                map.put(direction, BreweryUtil.rotateShape(Direction.NORTH, direction, bottomVoxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, bottomVoxelShapeSupplier.get()));
             }
         });
         TOP_SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL) {
-                map.put(direction, BreweryUtil.rotateShape(Direction.NORTH, direction, topVoxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, topVoxelShapeSupplier.get()));
             }
         });
     }

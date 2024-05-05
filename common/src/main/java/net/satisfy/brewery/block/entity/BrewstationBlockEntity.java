@@ -1,5 +1,8 @@
-package net.satisfy.brewery.entity;
+package net.satisfy.brewery.block.entity;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
+import de.cristelknight.doapi.common.world.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -27,12 +30,11 @@ import net.satisfy.brewery.block.brew_event.BrewHelper;
 import net.satisfy.brewery.block.property.BrewMaterial;
 import net.satisfy.brewery.block.property.Heat;
 import net.satisfy.brewery.block.property.Liquid;
+import net.satisfy.brewery.entity.BeerElementalEntity;
 import net.satisfy.brewery.item.DrinkBlockItem;
 import net.satisfy.brewery.recipe.BrewingRecipe;
 import net.satisfy.brewery.registry.*;
 import net.satisfy.brewery.util.BreweryMath;
-import net.satisfy.brewery.util.BreweryUtil;
-import net.satisfy.brewery.util.ImplementedInventory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -56,7 +58,7 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
     private int totalEvents;
     private NonNullList<ItemStack> ingredients;
     private ItemStack beer = ItemStack.EMPTY;
-    private final SoundEvent spawnEntitySound = SoundEventRegistry.BREWSTATION_PROCESS_FAILED.get();
+    private final SoundEvent spawnEntitySound = DoApiSoundEventRegistry.BREWSTATION_PROCESS_FAILED.get();
 
     public BrewstationBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(BlockEntityRegistry.BREWINGSTATION_BLOCK_ENTITY.get(), blockPos, blockState);
@@ -124,7 +126,7 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
 
         if (soundTime >= SOUND_DURATION) {
             assert this.level != null;
-            level.playSound(null, blockPos, SoundEventRegistry.BREWSTATION_AMBIENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, blockPos, DoApiSoundEventRegistry.BREWSTATION_AMBIENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             soundTime = 0;
         }
         soundTime++;
@@ -237,7 +239,7 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public void saveAdditional(CompoundTag compoundTag) {
-        if (!this.components.isEmpty()) BreweryUtil.putBlockPoses(compoundTag, this.components);
+        if (!this.components.isEmpty()) GeneralUtil.putBlockPoses(compoundTag, this.components);
         ContainerHelper.saveAllItems(compoundTag, this.ingredients);
         compoundTag.put("beer", this.beer.save(new CompoundTag()));
         compoundTag.putInt("solved", solved);
@@ -249,7 +251,7 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public void load(CompoundTag compoundTag) {
-        this.components = BreweryUtil.readBlockPoses(compoundTag);
+        this.components = GeneralUtil.readBlockPoses(compoundTag);
         this.ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(compoundTag, this.ingredients);
         if (compoundTag.contains("beer")) this.beer = ItemStack.of(compoundTag.getCompound("beer"));

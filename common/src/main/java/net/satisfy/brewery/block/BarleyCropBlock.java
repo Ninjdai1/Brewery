@@ -1,4 +1,4 @@
-package net.satisfy.brewery.block.crops;
+package net.satisfy.brewery.block;
 
 import net.satisfy.brewery.registry.*;
 import net.minecraft.core.BlockPos;

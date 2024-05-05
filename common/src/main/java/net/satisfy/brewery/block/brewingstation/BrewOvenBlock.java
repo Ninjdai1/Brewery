@@ -1,5 +1,7 @@
 package net.satisfy.brewery.block.brewingstation;
 
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,8 +29,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.satisfy.brewery.block.property.BrewMaterial;
 import net.satisfy.brewery.block.property.Heat;
 import net.satisfy.brewery.registry.BlockStateRegistry;
-import net.satisfy.brewery.registry.SoundEventRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -98,7 +98,7 @@ public class BrewOvenBlock extends BrewingstationBlock {
             if (blockState.getValue(HEAT) == Heat.WEAK) {
                 long currentTime = System.currentTimeMillis();
                 if (currentTime - lastSoundTime >= 9500) {
-                    level.playLocalSound(x, y, z, SoundEventRegistry.BREWSTATION_OVEN.get(), SoundSource.BLOCKS, 0.70F, 1.0F, false);
+                    level.playLocalSound(x, y, z, DoApiSoundEventRegistry.BREWSTATION_OVEN.get(), SoundSource.BLOCKS, 0.70F, 1.0F, false);
                     lastSoundTime = currentTime;
                 }
                 if (randomSource.nextDouble() < 0.2D) {
@@ -137,7 +137,7 @@ public class BrewOvenBlock extends BrewingstationBlock {
         };
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, BreweryUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
     }

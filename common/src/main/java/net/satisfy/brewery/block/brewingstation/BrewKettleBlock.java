@@ -1,11 +1,11 @@
 package net.satisfy.brewery.block.brewingstation;
 
-import net.minecraft.ChatFormatting;
+import de.cristelknight.doapi.common.registry.DoApiSoundEventRegistry;
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -33,11 +33,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.satisfy.brewery.block.property.BrewMaterial;
 import net.satisfy.brewery.block.property.Liquid;
-import net.satisfy.brewery.entity.BrewstationBlockEntity;
+import net.satisfy.brewery.block.entity.BrewstationBlockEntity;
 import net.satisfy.brewery.registry.BlockStateRegistry;
 import net.satisfy.brewery.registry.ObjectRegistry;
-import net.satisfy.brewery.registry.SoundEventRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -145,7 +143,7 @@ public class BrewKettleBlock extends BrewingstationBlock implements EntityBlock 
             double z = blockPos.getZ() + 0.5;
 
             if (randomSource.nextDouble() < 0.3D) {
-                level.playLocalSound(x, y, z, SoundEventRegistry.BREWSTATION_KETTLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                level.playLocalSound(x, y, z, DoApiSoundEventRegistry.BREWSTATION_KETTLE.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
 
             double offset = 0.2;
@@ -268,7 +266,7 @@ public class BrewKettleBlock extends BrewingstationBlock implements EntityBlock 
         };
         SHAPE = Util.make(new HashMap<>(), map -> {
             for (Direction direction : Direction.Plane.HORIZONTAL.stream().toList()) {
-                map.put(direction, BreweryUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
+                map.put(direction, GeneralUtil.rotateShape(Direction.NORTH, direction, voxelShapeSupplier.get()));
             }
         });
     }

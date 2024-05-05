@@ -121,6 +121,6 @@ public class RopeCollisionEntity extends Entity implements IRopeEntity {
 
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this); //BreweryUtil.createEntitySpawnPacket(BreweryNetworking.SPAWN_COLLISION_S2C_ID, this);
+        return new ClientboundAddEntityPacket(this); //GeneralUtil.createEntitySpawnPacket(BreweryNetworking.SPAWN_COLLISION_S2C_ID, this);
     }
 }

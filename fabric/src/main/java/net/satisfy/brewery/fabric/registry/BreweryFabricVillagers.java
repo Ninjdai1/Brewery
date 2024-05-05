@@ -1,10 +1,10 @@
 package net.satisfy.brewery.fabric.registry;
 
+import de.cristelknight.doapi.common.util.VillagerUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.satisfy.brewery.registry.ObjectRegistry;
 import net.satisfy.brewery.util.BreweryIdentifier;
-import net.satisfy.brewery.util.BreweryVillagerUtil;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.villager.VillagerProfessionBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
@@ -23,37 +23,37 @@ public class BreweryFabricVillagers {
 
     public static void init() {
         TradeOfferHelper.registerVillagerOffers(BREWER, 1, factories -> {
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.HOPS_SEEDS.get(), 2, 3, 5));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.CORN_SEEDS.get(), 2, 3, 5));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BARLEY_SEEDS.get(), 2, 3, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.HOPS_SEEDS.get(), 2, 3, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CORN_SEEDS.get(), 2, 3, 5));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BARLEY_SEEDS.get(), 2, 3, 5));
         });
         TradeOfferHelper.registerVillagerOffers(BREWER, 2, factories -> {
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.HOPS.get(), 4, 2, 7));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.CORN.get(), 4, 2, 7));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BARLEY.get(), 4, 2, 7));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.HOPS.get(), 4, 2, 7));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.CORN.get(), 4, 2, 7));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BARLEY.get(), 4, 2, 7));
 
         });
         TradeOfferHelper.registerVillagerOffers(BREWER, 3, factories -> {
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.PORK_KNUCKLE.get(), 7, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.PRETZEL.get(), 7, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.DUMPLINGS.get(), 7, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.SAUSAGE.get(), 7, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.GINGERBREAD.get(), 7, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.MASHED_POTATOES.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.PORK_KNUCKLE.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.PRETZEL.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.DUMPLINGS.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.SAUSAGE.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.GINGERBREAD.get(), 7, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.MASHED_POTATOES.get(), 7, 1, 10));
 
         });
         TradeOfferHelper.registerVillagerOffers(BREWER, 4, factories -> {
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_TROUSERS.get(), 4, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_BOOTS.get(), 5, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_SHOES.get(), 5, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_TROUSERS.get(), 4, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_BOOTS.get(), 5, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_SHOES.get(), 5, 1, 10));
 
         });
         TradeOfferHelper.registerVillagerOffers(BREWER, 5, factories -> {
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_HAT.get(), 10, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_HAT_RED.get(), 10, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_REGALIA.get(), 10, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_DRESS.get(), 10, 1, 10));
-            factories.add(new BreweryVillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_BLOUSE.get(), 10, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_HAT.get(), 10, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_HAT_RED.get(), 10, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_REGALIA.get(), 10, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_DRESS.get(), 10, 1, 10));
+            factories.add(new VillagerUtil.SellItemFactory(ObjectRegistry.BREWFEST_BLOUSE.get(), 10, 1, 10));
 
 
         });

@@ -1,7 +1,7 @@
-package net.satisfy.brewery.entity;
+package net.satisfy.brewery.block.entity;
 
+import de.cristelknight.doapi.common.util.GeneralUtil;
 import net.satisfy.brewery.registry.BlockEntityRegistry;
-import net.satisfy.brewery.util.BreweryUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -78,7 +78,7 @@ public class BeerKegFlowerPotBlockEntity extends BlockEntity {
         if(level != null && !level.isClientSide()) {
             Packet<ClientGamePacketListener> updatePacket = getUpdatePacket();
 
-            for (ServerPlayer player : BreweryUtil.tracking((ServerLevel) level, getBlockPos())) {
+            for (ServerPlayer player : GeneralUtil.tracking((ServerLevel) level, getBlockPos())) {
                 player.connection.send(updatePacket);
             }
         }

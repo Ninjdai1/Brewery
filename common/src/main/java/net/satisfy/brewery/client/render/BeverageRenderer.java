@@ -13,7 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.satisfy.brewery.block.BeverageBlock;
 import net.satisfy.brewery.item.DrinkBlockItem;
 
-import static net.satisfy.brewery.util.BreweryClientUtil.renderBlock;
+import static de.cristelknight.doapi.client.ClientUtil.renderBlock;
+
 
 @Environment(EnvType.CLIENT)
 public class BeverageRenderer implements StorageTypeRenderer {

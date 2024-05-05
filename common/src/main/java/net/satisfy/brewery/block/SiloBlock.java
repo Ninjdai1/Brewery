@@ -30,7 +30,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.satisfy.brewery.entity.SiloBlockEntity;
+import net.satisfy.brewery.block.entity.SiloBlockEntity;
 import net.satisfy.brewery.registry.BlockEntityRegistry;
 import net.satisfy.brewery.registry.ObjectRegistry;
 import net.satisfy.brewery.util.silo.ConnectivityHandler;
