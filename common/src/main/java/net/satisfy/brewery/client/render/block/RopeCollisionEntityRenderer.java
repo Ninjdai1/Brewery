@@ -1,4 +1,4 @@
-package net.satisfy.brewery.client.render;
+package net.satisfy.brewery.client.render.block;
 
 import net.satisfy.brewery.entity.rope.RopeCollisionEntity;
 import net.fabricmc.api.EnvType;

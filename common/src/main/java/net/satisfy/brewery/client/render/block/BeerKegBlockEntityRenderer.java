@@ -1,4 +1,4 @@
-package net.satisfy.brewery.client.render;
+package net.satisfy.brewery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.satisfy.brewery.block.BeerKegFlowerPotBlock;
@@ -11,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 
 import static de.cristelknight.doapi.client.ClientUtil.renderBlock;
-
 
 public class BeerKegBlockEntityRenderer implements BlockEntityRenderer<BeerKegFlowerPotBlockEntity> {
 

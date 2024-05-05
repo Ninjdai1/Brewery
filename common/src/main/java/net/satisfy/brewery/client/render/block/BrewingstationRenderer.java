@@ -1,4 +1,4 @@
-package net.satisfy.brewery.client.render;
+package net.satisfy.brewery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.cristelknight.doapi.client.ClientUtil;
@@ -27,7 +27,7 @@ public class BrewingstationRenderer implements BlockEntityRenderer<BrewstationBl
         List<ItemStack> ingredients = entity.getIngredient();
         if (ingredients.isEmpty()) return;
 
-        matrixStack.pushPose(); // Ensure this is the first thing done after conditions check
+        matrixStack.pushPose();
         setupInitialTransform(matrixStack, entity);
 
         Random random = new Random(entity.getBlockPos().hashCode());

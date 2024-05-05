@@ -1,4 +1,4 @@
-package net.satisfy.brewery.client.render;
+package net.satisfy.brewery.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

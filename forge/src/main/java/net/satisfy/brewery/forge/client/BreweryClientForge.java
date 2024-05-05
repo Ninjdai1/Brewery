@@ -11,9 +11,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegisterEvent;
 import net.satisfy.brewery.client.model.BeerElementalModel;
 import net.satisfy.brewery.client.model.RopeKnotEntityModel;
-import net.satisfy.brewery.client.render.*;
-import net.satisfy.brewery.entity.BeerElementalAttackEntity;
-import net.satisfy.brewery.entity.rope.RopeCollisionEntity;
+import net.satisfy.brewery.client.render.block.HangingRopeRenderer;
+import net.satisfy.brewery.client.render.block.RopeCollisionEntityRenderer;
+import net.satisfy.brewery.client.render.block.RopeKnotRenderer;
+import net.satisfy.brewery.client.render.entity.BeerElementalAttackRenderer;
+import net.satisfy.brewery.client.render.entity.BeerElementalRenderer;
 import net.satisfy.brewery.registry.EntityRegistry;
 import net.satisfy.brewery.registry.ModelRegistry;
 
