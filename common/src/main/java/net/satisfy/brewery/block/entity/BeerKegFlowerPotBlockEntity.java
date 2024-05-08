@@ -75,10 +75,10 @@ public class BeerKegFlowerPotBlockEntity extends BlockEntity {
 
     @Override
     public void setChanged() {
-        if(level != null && !level.isClientSide()) {
+        if(level insanceof ServerLevel serverLevel) {
             Packet<ClientGamePacketListener> updatePacket = getUpdatePacket();
 
-            for (ServerPlayer player : GeneralUtil.tracking((ServerLevel) level, getBlockPos())) {
+            for (ServerPlayer player : GeneralUtil.tracking(ServerLevel, getBlockPos())) {
                 player.connection.send(updatePacket);
             }
         }
