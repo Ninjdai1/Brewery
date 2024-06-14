@@ -18,13 +18,16 @@ public class ProtectiveTouchEvent implements PlayerEvent.AttackEntity {
     @Override
     public EventResult attack(Player player, Level level, Entity target, InteractionHand hand, @Nullable EntityHitResult result) {
         if (player.hasEffect(MobEffectRegistry.PROTECTIVETOUCH.get())) {
-            if (target instanceof LivingEntity) {
-                ((LivingEntity) target).addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
-                level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 2.5, target.getZ(), 0, 0, 0);
-                level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(), 0, 0, 0);
-                level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 1.5, target.getZ(), 0, 0, 0);
+            if (target instanceof LivingEntity livingTarget) {
+                MobEffectInstance currentEffect = livingTarget.getEffect(MobEffects.ABSORPTION);
+                if (currentEffect == null || currentEffect.getDuration() < 200) {
+                    livingTarget.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
+                    level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 2.5, target.getZ(), 0, 0, 0);
+                    level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(), 0, 0, 0);
+                    level.addParticle(ParticleTypes.GLOW_SQUID_INK, target.getX(), target.getY() + target.getBbHeight() / 1.5, target.getZ(), 0, 0, 0);
 
-                return EventResult.interruptFalse();
+                    return EventResult.interruptFalse();
+                }
             }
         }
 
