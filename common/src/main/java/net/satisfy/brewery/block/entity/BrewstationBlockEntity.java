@@ -11,7 +11,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
@@ -65,18 +64,12 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
         ingredients = NonNullList.withSize(3, ItemStack.EMPTY);
     }
 
-    public void updateInClientWorld() {
-        if (this.level instanceof ServerLevel serverLevel)
-            serverLevel.getChunkSource().blockChanged(this.getBlockPos());
-    }
-
     public void setComponents(BlockPos... components) {
         if (components.length != 4) {
             return;
         }
         this.components.addAll(Arrays.asList(components));
     }
-
 
     public InteractionResult addIngredient(ItemStack itemStack) {
         for (int i = 0; i < 3; i++) {
@@ -161,13 +154,13 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
         }
     }
 
-
-    private boolean canBrew(Recipe<?> recipe) {
+    private boolean canBrew(@Nullable Recipe<?> recipe) {
         if (recipe == null || this.level == null)
             return false;
+        BlockState blockState = this.level.getBlockState(this.getBlockPos());
         return recipe instanceof BrewingRecipe brewingRecipe &&
-                this.level.getBlockState(this.getBlockPos()).getValue(BlockStateRegistry.MATERIAL).getLevel() >= brewingRecipe.getMaterial().getLevel() &&
-                this.level.getBlockState(this.getBlockPos()).getValue(BlockStateRegistry.LIQUID) != Liquid.EMPTY &&
+                blockState.getValue(BlockStateRegistry.MATERIAL).getLevel() >= brewingRecipe.getMaterial().getLevel() &&
+                blockState.getValue(BlockStateRegistry.LIQUID) != Liquid.EMPTY &&
                 this.level.getBlockState(BrewHelper.getBlock(ObjectRegistry.BREW_OVEN.get(), this.components, this.level)).getValue(BlockStateRegistry.HEAT) != Heat.OFF;
     }
 
@@ -206,7 +199,6 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
         }
     }
 
-
     private void spawnElementals() {
         assert this.level != null;
         BlockState blockState = this.level.getBlockState(this.getBlockPos());
@@ -218,12 +210,11 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
                 this.level.addFreshEntity(beerElemental);
 
                 this.level.playSound(null, spawnPos, spawnEntitySound, SoundSource.BLOCKS, 1.0F, 1.0F);
-
             }
         }
     }
 
-    public void endBrewing(){
+    public void endBrewing() {
         BrewHelper.finishEvents(this);
         this.solved = 0;
         this.brewTime = 0;
@@ -231,7 +222,6 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
         this.soundTime = 3 * 20;
         this.timeToNextEvent = Integer.MIN_VALUE;
     }
-
 
     public boolean isPartOf(BlockPos blockPos) {
         return components.contains(blockPos);
@@ -291,12 +281,11 @@ public class BrewstationBlockEntity extends BlockEntity implements ImplementedIn
         return this.ingredients;
     }
 
-
-    //CONTAINER
     @Override
     public NonNullList<ItemStack> getItems() {
         return ingredients;
     }
+
     @Override
     public boolean stillValid(Player player) {
         assert this.level != null;
