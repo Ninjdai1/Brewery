@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class BeerKegFlowerPotBlockEntity extends BlockEntity {
     private Item flower;
@@ -69,16 +70,16 @@ public class BeerKegFlowerPotBlockEntity extends BlockEntity {
 
 
     @Override
-    public CompoundTag getUpdateTag() {
+    public @NotNull CompoundTag getUpdateTag() {
         return this.saveWithoutMetadata();
     }
 
     @Override
     public void setChanged() {
-        if(level insanceof ServerLevel serverLevel) {
+        if(level instanceof ServerLevel serverLevel) {
             Packet<ClientGamePacketListener> updatePacket = getUpdatePacket();
 
-            for (ServerPlayer player : GeneralUtil.tracking(ServerLevel, getBlockPos())) {
+            for (ServerPlayer player : GeneralUtil.tracking(serverLevel, getBlockPos())) {
                 player.connection.send(updatePacket);
             }
         }
